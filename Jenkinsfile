@@ -1,18 +1,18 @@
 pipeline {
     agent any
     stages {
-      stage ('CxSAST') {
-        steps {
-          step([$class: 'CxScanBuilder',
-                comment: '',
-                configAsCode: false,
-                credentialsId: 'checkmarx-user',
-                customFields: '',
-                excludeFolders: '',
-                exclusionsSetting: 'job',
-                failBuildOnNewResults: true,
-                failBuildOnNewSeverity: 'LOW',
-                filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
+        stage ('CxSAST') {
+            steps {
+                step([$class: 'CxScanBuilder',
+                      comment: '',
+                      configAsCode: false,
+                      credentialsId: 'checkmarx-user',
+                      customFields: '',
+                      excludeFolders: '',
+                      exclusionsSetting: 'job',
+                      failBuildOnNewResults: true,
+                      failBuildOnNewSeverity: 'LOW',
+                      filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
                                   !**/.gitgnore/**/*, !**/.gradle/**/*, !**/.checkstyle/**/*, !**/.classpath/**/*, !**/bin/**/*,
                                   !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
                                   !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
@@ -27,21 +27,21 @@ pipeline {
                                   !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/*.iml, !Checkmarx/Reports/*.*,
                                   !OSADependencies.json, !**/node_modules/**/*, !**/.cxsca-results.json, !**/.cxsca-sast-results.json, !.checkmarx/cx.config,
                                   src/include/**/*''',
-                fullScanCycle: 10,
-                jobStatusOnError: 'FAILURE',
-                groupId: '1',
-                preset: '0',
-                projectName: 'cxsast-jenkins-scan-subdirectory',
-                sastEnabled: true,
-                scaReportFormat: 'PDF',
-                serverUrl: 'http://ip-172-35-1-213.ec2.internal',
-                sourceEncoding: '1',
-                username: '',
-                vulnerabilityThresholdEnabled: true,
-                vulnerabilityThresholdResult: 'FAILURE',
-                waitForResultsEnabled: true
-            ])
+                      fullScanCycle: 10,
+                      jobStatusOnError: 'FAILURE',
+                      groupId: '1',
+                      preset: '0',
+                      projectName: 'cxsast-jenkins-scan-subdirectory',
+                      sastEnabled: true,
+                      scaReportFormat: 'PDF',
+                      serverUrl: 'http://ip-172-35-1-213.ec2.internal',
+                      sourceEncoding: '1',
+                      username: '',
+                      vulnerabilityThresholdEnabled: true,
+                      vulnerabilityThresholdResult: 'FAILURE',
+                      waitForResultsEnabled: true
+                ])
+            }
         }
-      }
     }
 }
