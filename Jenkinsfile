@@ -44,7 +44,7 @@ pipeline {
                       vulnerabilityThresholdResult: 'FAILURE',
                       waitForResultsEnabled: true
                 ])
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'Handling error from CxSAST stage') {
                     sh "exit 1"
                 }
             }
