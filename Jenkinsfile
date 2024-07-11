@@ -10,8 +10,8 @@ pipeline {
                 customFields: '',
                 excludeFolders: '',
                 exclusionsSetting: 'job',
-                failBuildOnNewResults: false,
-                failBuildOnNewSeverity: 'HIGH',
+                failBuildOnNewResults: true,
+                failBuildOnNewSeverity: 'LOW',
                 filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
                                   !**/.gitgnore/**/*, !**/.gradle/**/*, !**/.checkstyle/**/*, !**/.classpath/**/*, !**/bin/**/*,
                                   !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
@@ -28,6 +28,7 @@ pipeline {
                                   !OSADependencies.json, !**/node_modules/**/*, !**/.cxsca-results.json, !**/.cxsca-sast-results.json, !.checkmarx/cx.config,
                                   src/include/**/*''',
                 fullScanCycle: 10,
+                jobStatusOnError: 'FAILURE',
                 groupId: '1',
                 password: '{AQAAABAAAAAQgl2nMau2LxXkt8kNXRoO2BDggK0QxAPXQQa4i5o5sSM=}',
                 preset: '0',
@@ -37,6 +38,7 @@ pipeline {
                 serverUrl: 'http://172.35.1.164',
                 sourceEncoding: '1',
                 username: '',
+                vulnerabilityThresholdEnabled: true,
                 vulnerabilityThresholdResult: 'FAILURE',
                 waitForResultsEnabled: true
             ])
