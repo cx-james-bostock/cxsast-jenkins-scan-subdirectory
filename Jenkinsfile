@@ -8,6 +8,7 @@ pipeline {
                       configAsCode: false,
                       credentialsId: 'checkmarx-user',
                       customFields: '',
+                      exceptionOnThresholdError: true,
                       excludeFolders: '',
                       exclusionsSetting: 'job',
                       failBuildOnNewResults: true,
