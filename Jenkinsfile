@@ -34,7 +34,7 @@ pipeline {
                 projectName: 'cxsast-jenkins-scan-subdirectory',
                 sastEnabled: true,
                 scaReportFormat: 'PDF',
-                serverUrl: 'http://172.35.1.164',
+                serverUrl: 'http://172.35.1.213',
                 sourceEncoding: '1',
                 username: '',
                 vulnerabilityThresholdEnabled: true,
