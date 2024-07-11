@@ -44,6 +44,9 @@ pipeline {
                       vulnerabilityThresholdResult: 'FAILURE',
                       waitForResultsEnabled: true
                 ])
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "exit 1"
+                }
             }
         }
         stage ('Test') {
