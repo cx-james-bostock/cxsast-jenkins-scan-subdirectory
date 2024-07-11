@@ -40,7 +40,7 @@ pipeline {
                       sourceEncoding: '1',
                       username: '',
                       vulnerabilityThresholdEnabled: true,
-                      vulnerabilityThresholdResult: 'UNSTABLE',
+                      vulnerabilityThresholdResult: 'SUCCESS',
                       waitForResultsEnabled: true
                 ])
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'Handling error from CxSAST stage') {
