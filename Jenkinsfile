@@ -10,7 +10,6 @@ pipeline {
                       customFields: '',
                       exceptionOnThresholdError: true,
                       excludeFolders: '',
-                      exclusionsSetting: 'job',
                       failBuildOnNewResults: true,
                       failBuildOnNewSeverity: 'LOW',
                       filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
@@ -42,7 +41,7 @@ pipeline {
                       sourceEncoding: '1',
                       username: '',
                       vulnerabilityThresholdEnabled: true,
-                      vulnerabilityThresholdResult: 'FAILURE',
+                      vulnerabilityThresholdResult: 'UNSTABLE',
                       waitForResultsEnabled: true
                 ])
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'Handling error from CxSAST stage') {
