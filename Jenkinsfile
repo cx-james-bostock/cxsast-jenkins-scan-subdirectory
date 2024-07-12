@@ -40,7 +40,7 @@ pipeline {
                       sourceEncoding: '1',
                       username: '',
                       vulnerabilityThresholdEnabled: true,
-                      vulnerabilityThresholdResult: 'SUCCESS',
+                      vulnerabilityThresholdResult: 'FAILURE',
                       waitForResultsEnabled: true
                 ])
             }
