@@ -30,7 +30,7 @@ pipeline {
                       groupId: '1',
                       highThreshold: 0,
                       jobStatusOnError: 'FAILURE',
-                      lowThreshold: 10,
+                      lowThreshold: 0,
                       mediumThreshold: 0,
                       preset: '0',
                       projectName: 'cxsast-jenkins-scan-subdirectory',
@@ -43,9 +43,6 @@ pipeline {
                       vulnerabilityThresholdResult: 'SUCCESS',
                       waitForResultsEnabled: true
                 ])
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'Handling error from CxSAST stage') {
-                    sh "exit 1"
-                }
             }
         }
         stage ('Test') {
