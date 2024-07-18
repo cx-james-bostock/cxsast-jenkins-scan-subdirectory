@@ -5,6 +5,7 @@ pipeline {
             steps {
                 step([$class: 'CxScanBuilder',
                       configAsCode: false,
+                      exceptionOnThresholdError: true,
                       filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
                                   !**/.gitgnore/**/*, !**/.gradle/**/*, !**/.checkstyle/**/*, !**/.classpath/**/*, !**/bin/**/*,
                                   !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
@@ -32,7 +33,7 @@ pipeline {
                       scaReportFormat: 'PDF',
                       sourceEncoding: '1',
                       vulnerabilityThresholdEnabled: true,
-                      vulnerabilityThresholdResult: 'FAILURE',
+                      vulnerabilityThresholdResult: 'SUCCESS',
                       waitForResultsEnabled: true
                 ])
             }
