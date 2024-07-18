@@ -33,7 +33,7 @@ pipeline {
                       lowThreshold: 0,
                       mediumThreshold: 0,
                       preset: '0',
-                      projectName: 'cxsast-jenkins-scan-subdirectory',
+                      projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
                       sastEnabled: true,
                       scaReportFormat: 'PDF',
                       serverUrl: 'http://ip-172-35-1-213.ec2.internal',
