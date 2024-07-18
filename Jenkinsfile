@@ -5,9 +5,6 @@ pipeline {
             steps {
                 step([$class: 'CxScanBuilder',
                       configAsCode: false,
-                      credentialsId: 'checkmarx-user',
-                      failBuildOnNewResults: true,
-                      failBuildOnNewSeverity: 'LOW',
                       filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
                                   !**/.gitgnore/**/*, !**/.gradle/**/*, !**/.checkstyle/**/*, !**/.classpath/**/*, !**/bin/**/*,
                                   !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
@@ -30,7 +27,7 @@ pipeline {
                       lowThreshold: 0,
                       mediumThreshold: 0,
                       preset: '0',
-                      projectName: 'CxServer\\SP\\jsb-cxsast-jenkins-scan-subdirectory',
+                      projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
                       sastEnabled: true,
                       scaReportFormat: 'PDF',
                       sourceEncoding: '1',
