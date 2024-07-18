@@ -30,7 +30,7 @@ pipeline {
                       lowThreshold: 0,
                       mediumThreshold: 0,
                       preset: '0',
-                      projectName: '/CxServer/SP/jsb-cxsast-jenkins-scan-subdirectory',
+                      projectName: 'CxServer\SP\jsb-cxsast-jenkins-scan-subdirectory',
                       sastEnabled: true,
                       scaReportFormat: 'PDF',
                       sourceEncoding: '1',
