@@ -21,7 +21,7 @@ pipeline {
                                   !OSADependencies.json, !**/node_modules/**/*, !**/.cxsca-results.json, !**/.cxsca-sast-results.json, !.checkmarx/cx.config,
                                   src/include/**/*''',
                       fullScanCycle: 10,
-                      groupId: '1',
+                      groupId: '2',
                       highThreshold: 0,
                       jobStatusOnError: 'FAILURE',
                       lowThreshold: 0,
