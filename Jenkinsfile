@@ -4,11 +4,8 @@ pipeline {
         stage ('CxSAST') {
             steps {
                 step([$class: 'CxScanBuilder',
-                      comment: '',
                       configAsCode: false,
                       credentialsId: 'checkmarx-user',
-                      customFields: '',
-                      excludeFolders: '',
                       failBuildOnNewResults: true,
                       failBuildOnNewSeverity: 'LOW',
                       filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
@@ -36,9 +33,7 @@ pipeline {
                       projectName: '/CxServer/SP/jsb-cxsast-jenkins-scan-subdirectory',
                       sastEnabled: true,
                       scaReportFormat: 'PDF',
-                      serverUrl: 'http://ip-172-35-1-213.ec2.internal',
                       sourceEncoding: '1',
-                      username: '',
                       vulnerabilityThresholdEnabled: true,
                       vulnerabilityThresholdResult: 'FAILURE',
                       waitForResultsEnabled: true
