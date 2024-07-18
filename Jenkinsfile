@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('CxSAST') {
             steps {
-                catchError(message: 'Caught error', buildResultÑ ´SUCCESS´, stageResult: 'FAILURE') {
+                catchError(message: 'Caught error', buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     step([$class: 'CxScanBuilder',
                           configAsCode: false,
                           exceptionOnThresholdError: true,
