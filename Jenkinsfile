@@ -25,7 +25,7 @@ pipeline {
                       groupId: '2',
                       highThreshold: 0,
                       jobStatusOnError: 'FAILURE',
-                      lowThreshold: 10,
+                      lowThreshold: 0,
                       mediumThreshold: 0,
                       preset: '0',
                       projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
