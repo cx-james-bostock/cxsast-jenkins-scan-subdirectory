@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage ('Parallel Stage') {
             parallel {
-                stage ('Before') {
+                stage ('Before CxSAST') {
+                    steps {
+                        echo "Before CxSAST"
+                    }
                 }
                 stage ('CxSAST') {
                     steps {
@@ -51,9 +54,9 @@ pipeline {
                         }
                     }
                 }
-                stage ('Test') {
+                stage ('After CxSAST') {
                     steps {
-                        echo "Test stage"
+                        echo "After CxSAST"
                     }
                 }
             }
