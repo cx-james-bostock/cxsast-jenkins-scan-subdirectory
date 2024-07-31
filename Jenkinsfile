@@ -1,11 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage ('CxSAST') {
-            steps {
-                step([$class: 'CxScanBuilder',
-                      configAsCode: false,
-                      filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
+        stage ('Parallel Stage') {
+            parallel {
+                stage ('Before') {
+                }
+                stage ('CxSAST') {
+                    steps {
+                        step([$class: 'CxScanBuilder',
+                              configAsCode: false,
+                              filterPattern: '''!**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*,
                                   !**/.gitgnore/**/*, !**/.gradle/**/*, !**/.checkstyle/**/*, !**/.classpath/**/*, !**/bin/**/*,
                                   !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
                                   !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
@@ -20,36 +24,38 @@ pipeline {
                                   !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/*.iml, !Checkmarx/Reports/*.*,
                                   !OSADependencies.json, !**/node_modules/**/*, !**/.cxsca-results.json, !**/.cxsca-sast-results.json, !.checkmarx/cx.config,
                                   src/include/**/*''',
-                      fullScanCycle: 10,
-                      groupId: '2',
-                      highThreshold: 0,
-                      jobStatusOnError: 'FAILURE',
-                      lowThreshold: 0,
-                      mediumThreshold: 0,
-                      preset: '0',
-                      projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
-                      sastEnabled: true,
-                      scaReportFormat: 'PDF',
-                      sourceEncoding: '1',
-                      vulnerabilityThresholdEnabled: true,
-                      vulnerabilityThresholdResult: 'FAILURE',
-                      waitForResultsEnabled: true
-                ])
-            }
-            post {
-                failure {
-                    script {
-                        currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS
+                              fullScanCycle: 10,
+                              groupId: '2',
+                              highThreshold: 0,
+                              jobStatusOnError: 'FAILURE',
+                              lowThreshold: 0,
+                              mediumThreshold: 0,
+                              preset: '0',
+                              projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
+                              sastEnabled: true,
+                              scaReportFormat: 'PDF',
+                              sourceEncoding: '1',
+                              vulnerabilityThresholdEnabled: true,
+                              vulnerabilityThresholdResult: 'FAILURE',
+                              waitForResultsEnabled: true
+                        ])
                     }
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh 'exit 1'
+                    post {
+                        failure {
+                            script {
+                                currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS
+                            }
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh 'exit 1'
+                            }
+                        }
                     }
                 }
-            }
-        }
-        stage ('Test') {
-            steps {
-                echo "Test stage"
+                stage ('Test') {
+                    steps {
+                        echo "Test stage"
+                    }
+                }
             }
         }
     }
