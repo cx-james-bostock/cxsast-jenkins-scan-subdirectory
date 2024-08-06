@@ -39,20 +39,20 @@ pipeline {
                               scaReportFormat: 'PDF',
                               sourceEncoding: '1',
                               vulnerabilityThresholdEnabled: true,
-                              vulnerabilityThresholdResult: 'FAILURE',
+                              vulnerabilityThresholdResult: 'UNSTABLE',
                               waitForResultsEnabled: true
                         ])
                     }
-                    post {
-                        failure {
-                            script {
-                                currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS
-                            }
-                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                                sh 'exit 1'
-                            }
-                        }
-                    }
+                    // post {
+                    //     failure {
+                    //         script {
+                    //             currentBuild.rawBuild.@result = hudson.model.Result.SUCCESS
+                    //         }
+                    //         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    //             sh 'exit 1'
+                    //         }
+                    //     }
+                    // }
                 }
                 stage ('After CxSAST') {
                     steps {
