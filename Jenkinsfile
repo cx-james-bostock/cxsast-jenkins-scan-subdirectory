@@ -37,7 +37,7 @@ pipeline {
                               projectName: 'jsb-cxsast-jenkins-scan-subdirectory',
                               sastEnabled: true,
                               scaReportFormat: 'PDF',
-                              sourceEncoding: '2',
+                              sourceEncoding: '5',
                               vulnerabilityThresholdEnabled: true,
                               vulnerabilityThresholdResult: 'UNSTABLE',
                               waitForResultsEnabled: true
